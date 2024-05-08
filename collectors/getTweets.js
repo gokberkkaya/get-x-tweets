@@ -1,6 +1,7 @@
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const { writeFile, readFile } = require('fs').promises;
 const fs = require('fs');
+const chrome = require('selenium-webdriver/chrome');
 const CryptoDataDownloader = require('./ooptry');
 const config = require('../config');
 
@@ -11,7 +12,10 @@ async function scrapeTwitterAccounts(config) {
 }
 
 async function scrapeTwitterAccount(config, targetAccount) {
-  const driver = await new Builder().forBrowser('chrome').build();
+  let driver = new Builder()
+    .forBrowser('chrome')
+    .setChromeOptions(new chrome.Options().addArguments('--headless=new'))
+    .build();
 
   try {
     await driver.get('https://x.com/login');
@@ -93,7 +97,7 @@ async function scrapeTweets(driver, duration, coinName, targetAccount) {
   const checkTimer = () => {
     console.log("Tweet gelmeyen toplam süre: ", timeWithoutTweets);
 
-    if (timeWithoutTweets >= 60) {
+    if (timeWithoutTweets >= 120) {
       console.log("--------- Toplanacak tweetler bitti. Sıradaki coin'e geçiliyor ---------");
       tweets = [];
       clearInterval(timer);
