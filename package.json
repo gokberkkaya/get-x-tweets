@@ -1,0 +1,32 @@
+{
+  "name": "get-x-tweets",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=16 <17"
+  },
+  "description": "This project helps us collect the tweets we need to obtain the dataset to develop the artificial intelligence in our graduation project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./api/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gokberkkaya/get-x-tweets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gokberkkaya/get-x-tweets/issues"
+  },
+  "homepage": "https://github.com/gokberkkaya/get-x-tweets#readme",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "selenium-webdriver": "^4.20.0"
+  }
+}
